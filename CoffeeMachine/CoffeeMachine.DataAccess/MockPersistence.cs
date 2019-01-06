@@ -85,19 +85,9 @@ namespace CoffeeMachine.DataAccess
                 },
                 new Denomination
                 {
-                    Name = "Dollar Coin",
-                    Value = 1
-                },
-                new Denomination
-                {
                     Name = "Dollar Bill",
                     Value = 1,
                     CanDispense = true
-                },
-                new Denomination
-                {
-                    Name = "2 Dollar Bill",
-                    Value = 2
                 },
                 new Denomination
                 {

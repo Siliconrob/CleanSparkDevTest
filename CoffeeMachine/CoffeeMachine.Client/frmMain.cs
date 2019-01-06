@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
@@ -49,6 +50,35 @@ namespace CoffeeMachine.Client
                 cboSize.SelectedIndex = 0;
             }
             ResetExtras(order);
+            ResetPayment(order);
+            lstOrderDetails.Items.Clear();
+            lblOrderTotal.Text = "-";
+            lblCurrentPayment.Text = "-";
+        }
+
+        private void ResetPayment(CoffeeOrder order)
+        {
+            nudPayment.Enabled = false;
+            nudPayment.Tag = "Payment";
+            nudPayment.Text = "";
+            var availableOptions = order.Data.ChangeOptions().Where(z => z.CanDispense).OrderBy(a => a.Value);
+            var limits = new
+            {
+                Min = availableOptions.FirstOrDefault(),
+                Max = availableOptions.LastOrDefault()
+            };
+            if (limits.Min == null)
+            {
+                nudPayment.Enabled = true;
+                return;
+            }
+            nudPayment.Text = limits.Min.Value.ToString(CultureInfo.InvariantCulture);
+            nudPayment.Increment = limits.Min.Value;
+            if (limits.Max != null)
+            {
+                nudPayment.Maximum = limits.Max.Value;
+            }
+            nudPayment.Enabled = true;
         }
 
         private void ResetExtras(CoffeeOrder order)
@@ -94,46 +124,59 @@ namespace CoffeeMachine.Client
             var item = newCoffee.ToListViewItem(Current);
             lstOrderDetails.Items.Add(item);
             ResetExtras(Current);
+            lblOrderTotal.Text = Current.Price().Price.GetValueOrDefault().ToString(CultureInfo.InvariantCulture);
+            HighlightTransactionState();
         }
 
 		private void btnAddPayment_Click(object sender, EventArgs e)
 		{
             Current = Current ?? new CoffeeOrder();
+            if (decimal.TryParse((nudPayment.Text ?? "").Trim(), out var result))
+            {
+                Current.Payments.Add(result);
+            }
+            lblCurrentPayment.Text = Current.Payments.Sum().ToString(CultureInfo.InvariantCulture);
+            ResetPayment(Current);
+            HighlightTransactionState();
 		}
 
-		private void btnVend_Click(object sender, EventArgs e)
+        private void HighlightTransactionState()
+        {
+            if (Current.Price().Price.GetValueOrDefault() > 0)
+            {
+                lblCurrentPayment.ForeColor = !Current.CanDispense() ? Color.Red : Color.Black;
+            }
+        }
+
+        private void btnVend_Click(object sender, EventArgs e)
 		{
             Current = Current ?? new CoffeeOrder();
-		}
-	}
-
-    public static class AddinNames
-    {
-        public const string Cream = "Cream";
-        public const string Sugar = "Sugar";
-    }
-
-    public static class CoffeeExtensions
-    {
-        public static ListViewItem ToListViewItem(this Coffee cup, CoffeeOrder current)
-        {
-            var subItems = new List<string>
+            if (!Current.Cups.Any() && !Current.Payments.Any())
             {
-                cup.Name,
-                cup.Extras.Count(s => s.Equals(AddinNames.Cream)).ToString(),
-                cup.Extras.Count(s => s.Equals(AddinNames.Sugar)).ToString()
-            };
-            if (current.Data.IsValid(cup))
-            {
-                var cost = cup.Price(current);
-                var total = cost.Cup.Price.GetValueOrDefault() + cost.Extras.Price.GetValueOrDefault();
-                subItems.Add(total.ToString());
+                return;
             }
-            var item = new ListViewItem(subItems.ToArray())
+            if (!Current.CanDispense())
             {
-                Tag = cup
-            };
-            return item;
+                var result = MessageBox.Show("Do you wish to cancel this order?", "Insufficient funds",
+                    MessageBoxButtons.YesNo);
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+            }
+            MessageBox.Show(Current.ReceiptText(), "Receipt");
+            Current = null;
+            Current = new CoffeeOrder();
+            InitializeOptions(Current);
+            HighlightTransactionState();
+        }
+
+        private void nudPayment_Leave(object sender, EventArgs e)
+        {
+            if (decimal.TryParse((nudPayment.Text ?? "").Trim(), out var result))
+            {
+                nudPayment.Text = (Math.Round(result * 20, MidpointRounding.AwayFromZero) / 20).ToString(CultureInfo.InvariantCulture);
+            }            
         }
     }
 }

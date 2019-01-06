@@ -6,6 +6,12 @@ namespace CoffeeMachine.Operations
 {
     public static class CoffeeExtensions
     {
+        public static decimal Paid(this Coffee cup, CoffeeOrder order)
+        {
+            return order.Data.Sizes().CupPrice(cup.Name).Price.GetValueOrDefault() +
+                   order.Data.Addins().ExtraPrice(cup.Extras).Price.GetValueOrDefault();
+        }
+
         public static CompoundPriceResult Price(this Coffee cup, CoffeeOrder order)
         {
             return new CompoundPriceResult
