@@ -45,11 +45,7 @@ namespace CoffeeMachine.Operations
             foreach (var cup in Cups)
             {
                 ProvideId(cup);
-                var total = new
-                {
-                    Cup = Data.Sizes().CupPrice(cup.Name),
-                    Extras = Data.Addins().ExtraPrice(cup.Extras)
-                };
+                var total = cup.Price(this);
                 if (string.IsNullOrEmpty(total.Cup.Message) && string.IsNullOrEmpty(total.Extras.Message))
                 {
                     orderCost += total.Cup.Price.GetValueOrDefault() + total.Extras.Price.GetValueOrDefault();

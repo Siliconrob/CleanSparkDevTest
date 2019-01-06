@@ -11,7 +11,7 @@ namespace CoffeeMachine.Operations
         {
             var extraDict = extras.ToReadOnlyDictionary();
             var pricingIssues = new List<string>();
-            decimal? price = null;
+            decimal price = 0;
             foreach (var extra in extraDict)
             {
                 var match = addins.FirstOrDefault(a => a.Name.Equals(extra.Key));
