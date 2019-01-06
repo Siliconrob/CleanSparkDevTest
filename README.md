@@ -2,12 +2,12 @@
 ![](img/coffee_vending.gif)
 
 # Project Structure
- - [Model Definitions](CoffeeMachine/CoffeeMachine.Model/) 
- - [Data Access](CoffeeMachine/CoffeeMachine.DataAcess/): Retrieves static constant data as a Mock currently, but is intended to be from a persistent data source eventually
+ - [Model Definitions](CoffeeMachine/CoffeeMachine.Model/): Consists of the plain class models for the system.
+ - [Data Access](CoffeeMachine/CoffeeMachine.DataAccess/): Retrieves static constant data as a Mock currently, but is intended to be from a persistent data source eventually
  - [Operations](CoffeeMachine/CoffeeMachine.Operations/): Logic involving how extras and coffee types work
  - [Tests](CoffeeMachine/CoffeeMachine.Tests/): Current suite of tests uses [xUnit](https://xunit.github.io/)
  
-Constraints below made me ignore pennies as a unit to accept or dispense so that is why inputs start a 0.05 and round when entered as well as dispense rounded up values.
+Constraints below made me ignore pennies as a unit to accept or dispense so that is why inputs start a 0.05 and round when entered as well as dispense rounded up values.  Extension methods are used to keep models and code small, concise, and malleable for functional pipelines.
 
 # Introduction 
 This repository is the starting point for the CleanSpark back-end developer exercise. The full solution will be a .NET application that mimics the functionality of a coffee vending machine. It will provide the means of ordering one or more customizable cups of coffee, providing payment, receiving change, and dispensing the correct product. 
