@@ -17,11 +17,16 @@ namespace CoffeeMachine.Operations
             var message = new StringBuilder();
             message.AppendLine($"Id: {current.Id}");
             message.AppendLine($"Start: {current.Started}");
-            if (current.Sold.HasValue)
+            var cups = current.Cups ?? new List<Coffee>();
+            if (current.Sold.HasValue && cups.Any())
             {
                 message.AppendLine($"Dispensed: {current.Sold}");
             }
-            foreach (var cup in current.Cups ?? new List<Coffee>())
+            else
+            {
+                message.AppendLine($"No coffee dispensed");
+            }
+            foreach (var cup in cups)
             {
                 var extras = cup.Extras.ToReadOnlyDictionary();
                 var extraText = string.Join(" ", extras.Select(z => $"{z.Value} - {z.Key}"));
@@ -35,6 +40,10 @@ namespace CoffeeMachine.Operations
             foreach (var payment in current.Payments ?? new List<decimal>())
             {
                 message.AppendLine($"Paid {payment:F}");
+            }
+            var totalPaid = (current.Payments ?? new List<decimal>()).Sum();
+            {
+                message.AppendLine($"Payments Total: {totalPaid:F}");
             }
             message.AppendLine($"Change:");
             foreach (var change in current.ChangeDispensed)

@@ -164,6 +164,15 @@ namespace CoffeeMachine.Client
                     return;
                 }
             }
+            if (!Current.Cups.Any())
+            {
+                var result = MessageBox.Show("Do you wish to cancel this order?", "No coffees added",
+                    MessageBoxButtons.YesNo);
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+            }
             MessageBox.Show(Current.ReceiptText(), "Receipt");
             Current = null;
             Current = new CoffeeOrder();
