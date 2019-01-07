@@ -81,7 +81,7 @@
             this.nudSugar.Location = new System.Drawing.Point(72, 70);
             this.nudSugar.Name = "nudSugar";
             this.nudSugar.Size = new System.Drawing.Size(79, 20);
-            this.nudSugar.TabIndex = 15;
+            this.nudSugar.TabIndex = 6;
             this.nudSugar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // nudCream
@@ -89,7 +89,7 @@
             this.nudCream.Location = new System.Drawing.Point(72, 46);
             this.nudCream.Name = "nudCream";
             this.nudCream.Size = new System.Drawing.Size(79, 20);
-            this.nudCream.TabIndex = 14;
+            this.nudCream.TabIndex = 5;
             this.nudCream.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // cboSize
@@ -99,7 +99,7 @@
             this.cboSize.Location = new System.Drawing.Point(72, 20);
             this.cboSize.Name = "cboSize";
             this.cboSize.Size = new System.Drawing.Size(79, 21);
-            this.cboSize.TabIndex = 9;
+            this.cboSize.TabIndex = 4;
             // 
             // btnAddCoffee
             // 
@@ -107,7 +107,7 @@
             this.btnAddCoffee.Margin = new System.Windows.Forms.Padding(1);
             this.btnAddCoffee.Name = "btnAddCoffee";
             this.btnAddCoffee.Size = new System.Drawing.Size(76, 22);
-            this.btnAddCoffee.TabIndex = 6;
+            this.btnAddCoffee.TabIndex = 7;
             this.btnAddCoffee.Text = "Add to Order";
             this.btnAddCoffee.UseVisualStyleBackColor = true;
             this.btnAddCoffee.Click += new System.EventHandler(this.btnAddCoffee_Click);
@@ -177,7 +177,7 @@
             this.nudPayment.Location = new System.Drawing.Point(72, 23);
             this.nudPayment.Name = "nudPayment";
             this.nudPayment.Size = new System.Drawing.Size(79, 20);
-            this.nudPayment.TabIndex = 14;
+            this.nudPayment.TabIndex = 10;
             this.nudPayment.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nudPayment.Leave += new System.EventHandler(this.nudPayment_Leave);
             // 
@@ -187,7 +187,7 @@
             this.btnAddPayment.Margin = new System.Windows.Forms.Padding(1);
             this.btnAddPayment.Name = "btnAddPayment";
             this.btnAddPayment.Size = new System.Drawing.Size(76, 22);
-            this.btnAddPayment.TabIndex = 7;
+            this.btnAddPayment.TabIndex = 11;
             this.btnAddPayment.Text = "Add to Order";
             this.btnAddPayment.UseVisualStyleBackColor = true;
             this.btnAddPayment.Click += new System.EventHandler(this.btnAddPayment_Click);
@@ -199,7 +199,7 @@
             this.label5.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 13);
-            this.label5.TabIndex = 7;
+            this.label5.TabIndex = 9;
             this.label5.Text = "Amount";
             // 
             // label6
@@ -248,7 +248,7 @@
             this.btnVend.Margin = new System.Windows.Forms.Padding(1);
             this.btnVend.Name = "btnVend";
             this.btnVend.Size = new System.Drawing.Size(76, 22);
-            this.btnVend.TabIndex = 9;
+            this.btnVend.TabIndex = 13;
             this.btnVend.Text = "Vend!";
             this.btnVend.UseVisualStyleBackColor = true;
             this.btnVend.Click += new System.EventHandler(this.btnVend_Click);
@@ -266,7 +266,7 @@
             this.lstOrderDetails.MultiSelect = false;
             this.lstOrderDetails.Name = "lstOrderDetails";
             this.lstOrderDetails.Size = new System.Drawing.Size(285, 123);
-            this.lstOrderDetails.TabIndex = 13;
+            this.lstOrderDetails.TabIndex = 12;
             this.lstOrderDetails.UseCompatibleStateImageBehavior = false;
             this.lstOrderDetails.View = System.Windows.Forms.View.Details;
             // 

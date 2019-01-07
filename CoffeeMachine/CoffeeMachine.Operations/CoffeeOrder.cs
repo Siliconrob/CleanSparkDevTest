@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml;
 using CoffeeMachine.DataAccess;
 using CoffeeMachine.Model;
 using CoffeeMachine.Model.Transaction;
@@ -89,17 +90,22 @@ namespace CoffeeMachine.Operations
         public Receipt End()
         {
             var dispensed = CanDispense();
+            var difference = Payments.Sum() - Price().Price.GetValueOrDefault();
             var result = new Receipt
             {
                 Id = Guid.NewGuid(),
                 Cups = dispensed ? Cups : new List<Coffee>(),
                 Payments = Payments,
                 Started = Initiated,
-                ChangeDispensed = Data.ChangeOptions().GetChange(Payments.Sum() - Price().Price.GetValueOrDefault())
+                ChangeDispensed = Data.ChangeOptions().GetChange(difference)
             };
             if (dispensed)
             {
                 result.Sold = DateTime.UtcNow;
+            }
+            if (Payments.Any() && Payments.Sum() > 0 && difference < 0)
+            {
+                result.ChangeDispensed = Data.ChangeOptions().GetChange(Payments.Sum());
             }
             return result;
         }
