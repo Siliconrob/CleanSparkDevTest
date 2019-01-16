@@ -51,11 +51,13 @@
             this.Cream = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Sugar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSugar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCream)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPayment)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -154,10 +156,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox2.Controls.Add(this.nudPayment);
             this.groupBox2.Controls.Add(this.btnAddPayment);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(11, 166);
+            this.groupBox2.Location = new System.Drawing.Point(11, 194);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(1);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(1);
@@ -205,7 +208,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(200, 186);
+            this.label6.Location = new System.Drawing.Point(21, 47);
             this.label6.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(87, 13);
@@ -215,7 +218,7 @@
             // lblCurrentPayment
             // 
             this.lblCurrentPayment.AutoSize = true;
-            this.lblCurrentPayment.Location = new System.Drawing.Point(302, 186);
+            this.lblCurrentPayment.Location = new System.Drawing.Point(123, 47);
             this.lblCurrentPayment.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblCurrentPayment.Name = "lblCurrentPayment";
             this.lblCurrentPayment.Size = new System.Drawing.Size(13, 13);
@@ -225,7 +228,7 @@
             // lblOrderTotal
             // 
             this.lblOrderTotal.AutoSize = true;
-            this.lblOrderTotal.Location = new System.Drawing.Point(302, 164);
+            this.lblOrderTotal.Location = new System.Drawing.Point(123, 25);
             this.lblOrderTotal.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblOrderTotal.Name = "lblOrderTotal";
             this.lblOrderTotal.Size = new System.Drawing.Size(13, 13);
@@ -235,7 +238,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(200, 164);
+            this.label8.Location = new System.Drawing.Point(21, 25);
             this.label8.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(59, 13);
@@ -244,7 +247,7 @@
             // 
             // btnVend
             // 
-            this.btnVend.Location = new System.Drawing.Point(202, 214);
+            this.btnVend.Location = new System.Drawing.Point(156, 20);
             this.btnVend.Margin = new System.Windows.Forms.Padding(1);
             this.btnVend.Name = "btnVend";
             this.btnVend.Size = new System.Drawing.Size(76, 22);
@@ -255,6 +258,9 @@
             // 
             // lstOrderDetails
             // 
+            this.lstOrderDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lstOrderDetails.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Type,
             this.Cream,
@@ -265,7 +271,7 @@
             this.lstOrderDetails.Location = new System.Drawing.Point(194, 26);
             this.lstOrderDetails.MultiSelect = false;
             this.lstOrderDetails.Name = "lstOrderDetails";
-            this.lstOrderDetails.Size = new System.Drawing.Size(285, 123);
+            this.lstOrderDetails.Size = new System.Drawing.Size(285, 151);
             this.lstOrderDetails.TabIndex = 12;
             this.lstOrderDetails.UseCompatibleStateImageBehavior = false;
             this.lstOrderDetails.View = System.Windows.Forms.View.Details;
@@ -289,17 +295,28 @@
             this.Price.Text = "Price";
             this.Price.Width = 68;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.btnVend);
+            this.groupBox3.Controls.Add(this.lblCurrentPayment);
+            this.groupBox3.Controls.Add(this.lblOrderTotal);
+            this.groupBox3.Location = new System.Drawing.Point(194, 194);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(285, 83);
+            this.groupBox3.TabIndex = 14;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Cash Me Out";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(491, 263);
+            this.ClientSize = new System.Drawing.Size(491, 291);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.lstOrderDetails);
-            this.Controls.Add(this.btnVend);
-            this.Controls.Add(this.lblOrderTotal);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.lblCurrentPayment);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.groupBox1);
@@ -313,6 +330,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPayment)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,6 +362,7 @@
         private System.Windows.Forms.NumericUpDown nudSugar;
         private System.Windows.Forms.NumericUpDown nudCream;
         private System.Windows.Forms.NumericUpDown nudPayment;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }
 
